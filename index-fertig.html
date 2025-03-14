@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Zähler</title>
+</head>
+<body>
+  <h1 id="count-output">0</h1>
+
+  <button id="add">+</button>
+  <button id="reset">0</button>
+  <button id="subtract">-</button>
+  
+  <script>
+    class Counter {
+      count = 0;
+      outputElement = null;
+
+      constructor(outputElement) {
+        this.outputElement = outputElement;
+      }
+
+      increaseCount() {
+        this.count++;
+        this.updateOutput();
+      }
+
+      decrementCount() {
+        this.count--;
+        this.updateOutput();
+      }
+
+      resetCount() {
+        this.count = 0;
+        this.updateOutput();
+      }
+
+      updateOutput() {
+        this.outputElement.textContent = this.count;
+      }
+    }
+
+    const addButton = document.querySelector('#add');
+    const subtractButton = document.querySelector('#subtract');
+    const resetButton = document.querySelector('#reset');
+    const countOutput = document.querySelector('#count-output');
+    
+    const counter = new Counter(countOutput);
+
+    addButton.addEventListener('click', function() {
+      counter.increaseCount();
+    });
+
+    subtractButton.addEventListener('click', function() {
+      counter.decrementCount();
+    });
+
+    resetButton.addEventListener('click', function() {
+      counter.resetCount();
+    });
+  </script>
+</body>
+</html>
